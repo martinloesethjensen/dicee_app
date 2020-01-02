@@ -32,20 +32,20 @@ class _DicePageState extends State<DicePage> {
       child: Center(
         child: Row(
           children: <Widget>[
-            Expanded(
-                child: FlatButton(
-              child: Image.asset("images/dice$leftDiceNumber.png"),
-              onPressed: randomizeDie,
-            )),
-            Expanded(
-                child: FlatButton(
-              child: Image.asset("images/dice$rightDiceNumber.png"),
-              onPressed: randomizeDie,
-            )),
+            buildExpandedDice(leftDiceNumber, randomizeDie),
+            buildExpandedDice(rightDiceNumber, randomizeDie),
           ],
         ),
       ),
     );
+  }
+
+  Expanded buildExpandedDice(int diceNumber, Function action) {
+    return Expanded(
+              child: FlatButton(
+            child: Image.asset("images/dice$diceNumber.png"),
+            onPressed: action,
+          ));
   }
 
   void randomizeDie() => setState(() {
